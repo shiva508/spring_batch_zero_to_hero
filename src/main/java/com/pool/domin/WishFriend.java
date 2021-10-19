@@ -22,6 +22,8 @@ public class WishFriend implements Serializable {
 	@Column(columnDefinition = "text")
 	@Lob
 	private String wisherFriendMemory;
+	@Lob
+	private String wisherAvtor;
 
 	public WishFriend() {
 
@@ -65,6 +67,14 @@ public class WishFriend implements Serializable {
 
 	public void setWisherFriendMemory(String wisherFriendMemory) {
 		this.wisherFriendMemory = wisherFriendMemory;
+	}
+
+	public String getWisherAvtor() {
+		return wisherAvtor;
+	}
+
+	public void setWisherAvtor(String wisherAvtor) {
+		this.wisherAvtor = wisherAvtor;
 	}
 
 }
