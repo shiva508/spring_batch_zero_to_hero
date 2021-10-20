@@ -2,12 +2,57 @@ console.log("Hello world!");
 
 $(document).ready(function () {
   getWishesOnload();
+
   $("#createwish").submit(function (event) {
     event.preventDefault();
+    Swal.showLoading();
     var nameOfWisher = $("#nameOfWisher").val();
+    var nameOfWishe = $("#nameOfWishe").val();
+    var heroMessage = $("#heroMessage").val();
+    var subHeroMessage = $("#subHeroMessage").val();
+    var heroImageimagebase64 = $("#heroImage-image-base64").val();
+    var subHeroImageimagebase64 = $("#subHeroImage-image-base64").val();
+    var emailOfWisher = $("#emailOfWisher").val();
+    var phoneNumber = $("#phoneNumber").val();
+    var inputObject = {};
+    inputObject.nameOfWishe = nameOfWishe;
+    inputObject.nameOfWisher = nameOfWisher;
+    inputObject.heroMessage = heroMessage;
+    inputObject.subHeroMessage = subHeroMessage;
+    inputObject.heroImage = heroImageimagebase64;
+    inputObject.subHeroImage = subHeroImageimagebase64;
+    inputObject.emailOfWisher = emailOfWisher;
+    inputObject.phoneNumber = phoneNumber;
+    $.ajax({
+      type: "POST",
+      contentType: "application/json",
+      url: "/wish/createwishrest",
+      data: JSON.stringify(inputObject),
+      dataType: "json",
+      cache: false,
+      success: function (data) {
+        $("#nameOfWisher").val("");
+        $("#nameOfWishe").val("");
+        $("#heroMessage").val("");
+        $("#subHeroMessage").val("");
+        $("#heroImage-image-base64").val("");
+        $("#subHeroImage-image-base64").val("");
+        $("#emailOfWisher").val("");
+        $("#phoneNumber").val("");
+        $("#heroImage").val("");
+        $("#subHeroImage").val("");
+        dynamicHtmlContentGenerator(data);
+        Swal.close();
+      },
+      error: function (e) {
+        console.log(e);
+        Swal.close();
+      },
+    });
   });
   $("#search-form").submit(function (event) {
     event.preventDefault();
+    Swal.showLoading();
     var wisherName = $("#wishername").val();
     var yourwishforfriend = $("#yourwishforfriend").val();
     var wisherimagebase64 = $("#wisher-image-base64").val();
@@ -27,21 +72,36 @@ $(document).ready(function () {
       dataType: "json",
       cache: false,
       success: function (data) {
+        $("#wishername").val("");
+        $("#yourwishforfriend").val("");
+        $("#wisher-image-base64").val("");
+        $("#wish-image-base64").val("");
+        $("#wisher-image").val("");
+        $("#wish-image").val("");
+
         dynamicHtmlContentGenerator(data);
+        Swal.close();
       },
       error: function (e) {
         console.log(e);
+        Swal.close();
       },
     });
   });
 
   $("#wisher-image").change(function () {
     display(this, "wisher-image-base64");
-    Swal.fire("Any fool can use a computer");
   });
   $("#wish-image").change(function () {
     display(this, "wish-image-base64");
-    Swal.fire("Any fool can use a computer");
+  });
+
+  $("#heroImage").change(function () {
+    display(this, "heroImage-image-base64");
+  });
+
+  $("#subHeroImage").change(function () {
+    display(this, "subHeroImage-image-base64");
   });
 
   function display(input, id) {
@@ -55,6 +115,7 @@ $(document).ready(function () {
     }
   }
   function getWishesOnload() {
+    Swal.showLoading();
     $.ajax({
       type: "GET",
       contentType: "application/json",
@@ -63,9 +124,11 @@ $(document).ready(function () {
       cache: false,
       success: function (data) {
         dynamicHtmlContentGenerator(data);
+        Swal.close();
       },
       error: function (e) {
         console.log(e);
+        Swal.close();
       },
     });
   }

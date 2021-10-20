@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,5 +36,20 @@ public class WeWishController {
 		//System.out.println(encodedString);
 		weWish = weWishService.createWeWish(weWish);
 		return new ResponseEntity<>(weWish, HttpStatus.CREATED);
+	}
+	
+	@PostMapping(value="/createwishrest")
+	public ResponseEntity<?> createWeWishRest(@RequestBody WeWish weWish) {
+		
+		//System.out.println(file.getOriginalFilename());
+		//String encodedString = weWishFileProcessor.byteToBase64Converter(file);
+		//System.out.println(encodedString);
+		weWish = weWishService.createWeWish(weWish);
+		return new ResponseEntity<>(weWish, HttpStatus.CREATED);
+	}
+	@GetMapping("/allwishes")
+	public ResponseEntity<?> getWishList(){
+		List<WeWish> weWishs=weWishService.getAllWeWishes();
+		return new ResponseEntity<>(weWishs, HttpStatus.CREATED);
 	}
 }

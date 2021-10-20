@@ -3,10 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="description"
-      content="Omnifood is an AI-powered food subscription that will make you eat healthy again, 365 days per year. It's tailored to your personal tastes and nutritional needs."
-    />
+    <meta name="description" content="we wish is used to wish our loved one" />
 
     <!-- Always include this line of code!!! -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,7 +62,7 @@
 
               <form class="cta-form" id="createwish" name="sign-up" netlify>
                 <div>
-                  <label for="nameOfWisher>Your Name</label>
+                  <label for="nameOfWisher">Your Name</label>
                   <input
                     id="nameOfWisher"
                     type="text"
@@ -84,7 +81,26 @@
                     required
                   />
                 </div>
-
+                <div>
+                  <label for="emailOfWisher">Email</label>
+                  <input
+                    id="emailOfWisher"
+                    type="text"
+                    placeholder="@com"
+                    name="emailOfWisher"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="emailOfWisher">Phone</label>
+                  <input
+                    id="phoneNumber"
+                    type="text"
+                    placeholder="00000000000"
+                    name="phoneNumber"
+                    required
+                  />
+                </div>
                 <div>
                   <label for="heroMessage">Hero Message</label>
                   <textarea
@@ -94,9 +110,7 @@
                   ></textarea>
                 </div>
                 <div>
-                  <label for="subHeroMessage"
-                    >Sub Hero Message</label
-                  >
+                  <label for="subHeroMessage">Sub Hero Message</label>
                   <textarea
                     class="form-control"
                     id="subHeroMessage"
@@ -106,20 +120,24 @@
 
                 <div>
                   <label for="heroImage">Upload hero image</label>
+                  <input type="file" class="form-control-file" id="heroImage" />
                   <input
-                    type="file"
-                    class="form-control-file"
-                    id="heroImage"
+                    type="hidden"
+                    name="heroImage-image-base64"
+                    id="heroImage-image-base64"
                   />
                 </div>
                 <div>
-                  <label for="subHeroImage"
-                    >Upload sub hero image</label
-                  >
+                  <label for="subHeroImage">Upload sub hero image</label>
                   <input
                     type="file"
                     class="form-control-file"
                     id="subHeroImage"
+                  />
+                  <input
+                    type="hidden"
+                    name="subHeroImage-image-base64"
+                    id="subHeroImage-image-base64"
                   />
                 </div>
 
