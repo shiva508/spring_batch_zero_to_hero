@@ -1,6 +1,11 @@
 console.log("Hello world!");
 
 $(document).ready(function () {
+  getWishesOnload();
+  $("#createwish").submit(function (event) {
+    event.preventDefault();
+    var nameOfWisher = $("#nameOfWisher").val();
+  });
   $("#search-form").submit(function (event) {
     event.preventDefault();
     var wisherName = $("#wishername").val();
@@ -22,37 +27,7 @@ $(document).ready(function () {
       dataType: "json",
       cache: false,
       success: function (data) {
-        console.log(data);
-        var htmlDynamicContent = "";
-        var imageDynamicContent = "";
-        data.forEach((element) => {
-          htmlDynamicContent += '<figure class="testimonial">';
-          htmlDynamicContent +=
-            '<img class="testimonial-img" alt="' +
-            element.wisherFriendName +
-            '" src="' +
-            element.wisherAvtor +
-            '" />';
-          htmlDynamicContent +=
-            '<blockquote class="testimonial-text">' +
-            element.wisherFriendMessaage +
-            "</blockquote>";
-          htmlDynamicContent +=
-            '<p class="testimonial-name">&mdash; ' +
-            element.wisherFriendName +
-            "</p>";
-          htmlDynamicContent += "</figure>";
-          imageDynamicContent += '<figure class="gallery-item">';
-          imageDynamicContent +=
-            '<img src="' +
-            element.wisherFriendMemory +
-            '" alt="Photo of beautifully arranged food" />';
-          imageDynamicContent += "</figure>";
-        });
-        $(".testimonials").empty();
-        $(".testimonials").append(htmlDynamicContent);
-        $(".gallery").empty();
-        $(".gallery").append(imageDynamicContent);
+        dynamicHtmlContentGenerator(data);
       },
       error: function (e) {
         console.log(e);
@@ -78,5 +53,54 @@ $(document).ready(function () {
       };
       reader.readAsDataURL(input.files[0]);
     }
+  }
+  function getWishesOnload() {
+    $.ajax({
+      type: "GET",
+      contentType: "application/json",
+      url: "/wishfriend/getallwishfriends",
+      dataType: "json",
+      cache: false,
+      success: function (data) {
+        dynamicHtmlContentGenerator(data);
+      },
+      error: function (e) {
+        console.log(e);
+      },
+    });
+  }
+
+  function dynamicHtmlContentGenerator(data) {
+    console.log(data);
+    var htmlDynamicContent = "";
+    var imageDynamicContent = "";
+    data.forEach((element) => {
+      htmlDynamicContent += '<figure class="testimonial">';
+      htmlDynamicContent +=
+        '<img class="testimonial-img" alt="' +
+        element.wisherFriendName +
+        '" src="' +
+        element.wisherAvtor +
+        '" />';
+      htmlDynamicContent +=
+        '<blockquote class="testimonial-text">' +
+        element.wisherFriendMessaage +
+        "</blockquote>";
+      htmlDynamicContent +=
+        '<p class="testimonial-name">&mdash; ' +
+        element.wisherFriendName +
+        "</p>";
+      htmlDynamicContent += "</figure>";
+      imageDynamicContent += '<figure class="gallery-item">';
+      imageDynamicContent +=
+        '<img src="' +
+        element.wisherFriendMemory +
+        '" alt="Photo of beautifully arranged food" />';
+      imageDynamicContent += "</figure>";
+    });
+    $(".testimonials").empty();
+    $(".testimonials").append(htmlDynamicContent);
+    $(".gallery").empty();
+    $(".gallery").append(imageDynamicContent);
   }
 });
