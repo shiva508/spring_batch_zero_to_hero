@@ -40,6 +40,7 @@ $(document).ready(function () {
         $("#heroImage").val("");
         $("#subHeroImage").val("");
         Swal.close();
+        Swal.fire("Wish is saved successfuly");
       },
       error: function (e) {
         console.log(e);
@@ -62,4 +63,15 @@ $(document).ready(function () {
   $("#subHeroImage").change(function () {
     display(this, "subHeroImage-image-base64");
   });
+
+  function display(input, id) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (event) {
+        $("#" + id + "").attr("value", event.target.result);
+        console.log(event.target.result);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
 });

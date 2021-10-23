@@ -38,88 +38,99 @@ public class WeWish implements Serializable {
 		return weWishId;
 	}
 
-	public void setWeWishId(Long weWishId) {
+	public WeWish setWeWishId(Long weWishId) {
 		this.weWishId = weWishId;
+		return this;
 	}
 
 	public String getNameOfWishe() {
 		return nameOfWishe;
 	}
 
-	public void setNameOfWishe(String nameOfWishe) {
+	public WeWish setNameOfWishe(String nameOfWishe) {
 		this.nameOfWishe = nameOfWishe;
+		return this;
 	}
 
 	public String getNameOfWisher() {
 		return nameOfWisher;
 	}
 
-	public void setNameOfWisher(String nameOfWisher) {
+	public WeWish setNameOfWisher(String nameOfWisher) {
 		this.nameOfWisher = nameOfWisher;
+		return this;
 	}
 
 	public String getHeroMessage() {
 		return heroMessage;
 	}
 
-	public void setHeroMessage(String heroMessage) {
+	public WeWish setHeroMessage(String heroMessage) {
 		this.heroMessage = heroMessage;
+		return this;
 	}
 
 	public String getSubHeroMessage() {
 		return subHeroMessage;
 	}
 
-	public void setSubHeroMessage(String subHeroMessage) {
+	public WeWish setSubHeroMessage(String subHeroMessage) {
 		this.subHeroMessage = subHeroMessage;
+		return this;
 	}
 
 	public Date getWishCreatedDate() {
 		return wishCreatedDate;
 	}
 
-	public void setWishCreatedDate(Date wishCreatedDate) {
+	public WeWish setWishCreatedDate(Date wishCreatedDate) {
 		this.wishCreatedDate = wishCreatedDate;
+		return this;
 	}
 
 	public Date getWishScheduledDate() {
 		return wishScheduledDate;
 	}
 
-	public void setWishScheduledDate(Date wishScheduledDate) {
+	public WeWish setWishScheduledDate(Date wishScheduledDate) {
 		this.wishScheduledDate = wishScheduledDate;
+		return this;
 	}
 
 	public String getEmailOfWisher() {
 		return emailOfWisher;
 	}
 
-	public void setEmailOfWisher(String emailOfWisher) {
+	public WeWish setEmailOfWisher(String emailOfWisher) {
 		this.emailOfWisher = emailOfWisher;
+		return this;
 	}
 
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
+	public WeWish setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+		return this;
 	}
 
 	public String getHeroImage() {
 		return heroImage;
 	}
 
-	public void setHeroImage(String heroImage) {
+	public WeWish setHeroImage(String heroImage) {
 		this.heroImage = heroImage;
+		return this;
 	}
 
 	public String getSubHeroImage() {
 		return subHeroImage;
 	}
 
-	public void setSubHeroImage(String subHeroImage) {
+	public WeWish setSubHeroImage(String subHeroImage) {
 		this.subHeroImage = subHeroImage;
+		return this;
 	}
 
 }
