@@ -666,3 +666,6 @@
 .footer-link:active {
   color: #555;
 }
+.upper-case-style {
+  text-transform: uppercase;
+}

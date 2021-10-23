@@ -42,7 +42,7 @@ public class WishAFriendController {
 	@PostMapping("/createwishfriendrest")
 	public ResponseEntity<?> wishAFriendRest(@RequestBody WishFriend wishFriend) {
 		wishFriend = wishFriendService.createWishFriend(wishFriend);
-		List<WishFriend> wishFriends = wishFriendService.getAllWishFriends();
+		List<WishFriend> wishFriends = wishFriendService.getfriendswishes(wishFriend.getWeWishId());
 		return new ResponseEntity<>(wishFriends, HttpStatus.CREATED);
 	}
 
