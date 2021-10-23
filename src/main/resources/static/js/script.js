@@ -81,6 +81,7 @@ $(document).ready(function () {
 
         dynamicHtmlContentGenerator(data);
         Swal.close();
+        Swal.fire("Wish is saved successfuly");
       },
       error: function (e) {
         console.log(e);
