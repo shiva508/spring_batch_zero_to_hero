@@ -58,7 +58,7 @@ $(document).ready(function () {
     var wisherimagebase64 = $("#wisher-image-base64").val();
     var wishimagebase64 = $("#wish-image-base64").val();
     inputObject = {};
-    inputObject.weWishId = 508;
+    inputObject.weWishId = $("#weWishId").val();
     inputObject.wisherFriendName = wisherName;
     inputObject.wisherFriendMessaage = yourwishforfriend;
     inputObject.wisherAvtor = wisherimagebase64;
@@ -120,7 +120,7 @@ $(document).ready(function () {
     $.ajax({
       type: "GET",
       contentType: "application/json",
-      url: "/wishfriend/getallwishfriends",
+      url: "/wishfriend/getfriendswishes/" + $("#weWishId").val(),
       dataType: "json",
       cache: false,
       success: function (data) {

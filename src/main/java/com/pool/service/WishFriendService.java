@@ -15,4 +15,6 @@ public interface WishFriendService {
 	public List<WishFriend> getAllWishFriends();
 
 	public CommonResponse deleteWishFriendById(Long wishFriendId);
+
+	public List<WishFriend> getfriendswishes(Long weWishId);
 }

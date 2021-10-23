@@ -8,7 +8,7 @@
     <!-- Always include this line of code!!! -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="icon" href="img/favicon.png" />
+    <link rel="icon" href="../img/favicon.png" />
     <link rel="apple-touch-icon" href="../img/apple-touch-icon.png" />
     <!-- <link rel="manifest" href="manifest.webmanifest" /> -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -47,17 +47,11 @@
   <body>
     <main>
       <section class="section-hero">
+        <input type="hidden" id="weWishId" th:value="${weWishId}" />
         <div class="hero">
           <div class="hero-text-box">
-            <h1 class="heading-primary">
-              <input type="hidden" id="weWishId" th:value="${weWishId}" />
-              Wishing you a very happy birthday NITHYA, Keep smiling every
-              single day
-            </h1>
-            <p class="hero-description">
-              Count not the candles…see the lights they give. Count not the
-              years, but the life you live. Wishing you a wonderful time ahead.
-            </p>
+            <h1 class="heading-primary" th:text="${weWish.heroMessage}"></h1>
+            <p class="hero-description" th:text="${weWish.subHeroMessage}">.</p>
           </div>
           <div class="hero-img-box">
             <picture>
@@ -78,12 +72,12 @@
           <div class="cta">
             <div class="cta-text-box">
               <h2 class="heading-secondary">
-                Let us send worm wishes to NITHYA!
+                Let us send worm wishes to
+                <span th:text="${weWish.nameOfWisher}"></span>!
               </h2>
               <p class="cta-text">
-                Healthy, tasty and hassle-free meals are waiting for you. Start
-                eating well today. You can cancel or pause anytime. And the
-                first meal is on us!
+                No matter how old we grow, no matter how much distance we have
+                between us, you will always stay in our heart..!
               </p>
 
               <form class="cta-form" id="search-form" name="sign-up" netlify>
@@ -134,7 +128,9 @@
                   />
                 </div>
 
-                <button class="btn btn--form">Wish NITHYA</button>
+                <button class="btn btn--form" nameOfWisher>
+                  Wish <span th:text="${weWish.nameOfWisher}"></span>
+                </button>
               </form>
             </div>
             <div class="cta-img-box" aria-label="Woman enjoying food">
