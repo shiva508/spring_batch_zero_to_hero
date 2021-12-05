@@ -10,8 +10,16 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.ToString;
+
 @Entity
 @Table
+/*
+ * @Data
+ * 
+ * @ToString
+ */
 public class WishFriend implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -76,5 +84,7 @@ public class WishFriend implements Serializable {
 	public void setWisherAvtor(String wisherAvtor) {
 		this.wisherAvtor = wisherAvtor;
 	}
+
+	
 
 }

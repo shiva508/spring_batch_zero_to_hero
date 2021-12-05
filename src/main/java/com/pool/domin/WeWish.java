@@ -11,8 +11,16 @@ import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.ToString;
+
 @Entity
 @Table
+/*
+ * @Data
+ * 
+ * @ToString
+ */
 public class WeWish implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
