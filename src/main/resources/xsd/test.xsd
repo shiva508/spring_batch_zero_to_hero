@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.wstutorial.com/ws/TutorialService"
+	targetNamespace="http://www.wstutorial.com/ws/TutorialService">
+	<xs:complexType name="statusCode">
+		<xs:sequence>
+			<xs:element name="code" type="xs:long" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TutorialType">
+		<xs:all>
+			<xs:element name="id" type="xs:long" />
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="author" type="xs:string" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:element name="updateTutorialRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tutorialType" type="tns:TutorialType" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="updateTutorialResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="statusCode" type="tns:statusCode" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="deleteTutorialRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="deleteTutorialResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="statusCode" type="tns:statusCode" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getTutorialsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getTutorialsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="tns:TutorialType" minOccurs="0"
+					maxOccurs="unbounded" name="tutorials" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="TutorialTypes">
+		<xs:sequence>
+			<xs:element type="tns:TutorialType" minOccurs="0"
+				maxOccurs="unbounded" name="tutorials" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="tutorialFault">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="message" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

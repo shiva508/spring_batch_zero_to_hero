@@ -31,4 +31,8 @@ public class WeWishWebController {
 		model.addAttribute("weWish", weWish);
 		return "wewishfriend";
 	}
+	@GetMapping("/user508")
+	public String wishHomePage508(Model model) {
+		return "408"; // view
+	}
 }
