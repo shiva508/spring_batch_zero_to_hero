@@ -7,9 +7,24 @@ body {
   background-color: #000;
   font-family: "Source Sans Pro";
 }
+header {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: start;
+  align-items: center;
+  box-shadow: 0 20px 30px 0 rgb(225 92 92 / 70%);
+  border-radius: 20px;
+}
+.we-wish-logo {
+  stroke: #13f340;
+  width: 122px;
+  height: 200px;
+  display: inline-block;
+}
 .we-wish-header {
   color: azure;
   display: grid;
+  grid-template-columns: auto auto;
   justify-content: center;
   align-items: center;
   font-size: 100px;
@@ -220,10 +235,24 @@ h2 {
   .wishes_text {
     box-shadow: 0 20px 30px 0 rgba(250, 44, 44, 0.7);
     padding-left: 24px;
+    margin-bottom: 10px;
+    border-radius: 20px;
   }
 }
 
 @media (max-width: 414px) {
+  header {
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: center;
+    align-items: center;
+  }
+  .we-wish-logo {
+    stroke: #13f340;
+    width: 122px;
+    height: 200px;
+    margin-left: 106px;
+  }
   .we-wish-header {
     color: azure;
     display: grid;
@@ -233,6 +262,7 @@ h2 {
     font-weight: 800;
     box-shadow: 0 20px 30px 0 rgb(225 92 92 / 70%);
     border-radius: 20px;
+    margin-top: -46px;
   }
   .container {
     width: 411px;
@@ -281,9 +311,8 @@ h2 {
   }
   .wishes_text {
     box-shadow: 0 20px 30px 0 rgba(250, 44, 44, 0.7);
-    padding-left: 24px;
-    margin-bottom: 10px;
+    /* padding-left: 24px; */
+    /* margin-bottom: 10px; */
     border-radius: 20px;
   }
 }
-
