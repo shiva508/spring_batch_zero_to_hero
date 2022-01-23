@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 
 import com.pool.domin.WishFriend;
 
-@Component
-@Aspect
+//@Component
+//@Aspect
 public class WeWishAspect {
 	Logger logger=LoggerFactory.getLogger(WeWishAspect.class);
 	

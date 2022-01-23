@@ -20,8 +20,8 @@ import org.springframework.context.annotation.Configuration;
 import com.pool.configuration.batch.itemreader.UserItemReader;
 import com.pool.domin.WeWish;
 
-//@Configuration
-//@EnableBatchProcessing
+@Configuration
+@EnableBatchProcessing
 public class WeWishBatchConfiguration extends DefaultBatchConfigurer{
 
 	@Autowired
@@ -29,8 +29,9 @@ public class WeWishBatchConfiguration extends DefaultBatchConfigurer{
 	
 	@Autowired
 	public StepBuilderFactory stepBuilderFactory;
+	
 	@Autowired
-	EntityManagerFactory emf;
+	private EntityManagerFactory emf;
 	
 	private UserItemReader<WeWish> reader;
 

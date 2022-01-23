@@ -1,8 +1,6 @@
 package com.pool.configuration.batch.itemreader;
 
 import java.util.List;
-
-
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.NonTransientResourceException;
 import org.springframework.batch.item.ParseException;
@@ -10,7 +8,7 @@ import org.springframework.batch.item.UnexpectedInputException;
 import org.springframework.batch.item.support.IteratorItemReader;
 import org.springframework.stereotype.Component;
 
-import com.pool.domin.WeWish;
+
 @Component
 public class UserItemReader<T> implements ItemReader<T> {
 
