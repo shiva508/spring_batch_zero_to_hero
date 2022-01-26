@@ -1,4 +1,4 @@
-package com.pool.configuration.batch.custopmitemreader;
+package com.pool.configuration.batch;
 
 import java.util.List;
 import java.util.Objects;

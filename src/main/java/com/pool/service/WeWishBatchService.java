@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import com.pool.configuration.batch.WeWishBatchConfiguration;
-import com.pool.configuration.batch.custopmitemreader.WeWishItemReader;
+import com.pool.configuration.batch.WeWishItemReader;
 import com.pool.domin.WeWish;
 
 @Component
