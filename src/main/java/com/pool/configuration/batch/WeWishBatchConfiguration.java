@@ -17,54 +17,61 @@ import org.springframework.batch.item.database.JpaItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import com.pool.configuration.batch.itemreader.UserItemReader;
+
+import com.pool.configuration.batch.custopmitemreader.WeWishItemReader;
 import com.pool.domin.WeWish;
 
 @Configuration
 @EnableBatchProcessing
 public class WeWishBatchConfiguration extends DefaultBatchConfigurer{
+	
+	@Autowired
+	public StepBuilderFactory stepBuilderFactory;
 
 	@Autowired
 	public JobBuilderFactory jobBuilderFactory; 
 	
-	@Autowired
-	public StepBuilderFactory stepBuilderFactory;
+	private WeWishItemReader<WeWish> reader;
 	
 	@Autowired
 	private EntityManagerFactory emf;
 	
-	private UserItemReader<WeWish> reader;
 
-	@StepScope
-	@Bean
-	public UserItemReader<WeWish> reader() {
-		return reader;
-	}
+	
 
-	public void setReader(UserItemReader<WeWish> reader) {
+	public void setReader(WeWishItemReader<WeWish> reader) {
 		this.reader = reader;
 	}
-	@Bean
+	
 	@StepScope
+	@Bean
+	public WeWishItemReader<WeWish> reader() {
+		return reader;
+	}
+	
+	@StepScope
+	@Bean
 	public JpaItemWriter<WeWish> writer(){
 		JpaItemWriter<WeWish> writer=new JpaItemWriter<>();
 		writer.setEntityManagerFactory(emf);
 		return writer;
 	}
-	@Bean
-	public Step step1() {
-		return stepBuilderFactory.get("stepName")
-				.<WeWish,WeWish>chunk(10)
-				.reader(reader())
-				.writer(writer())
-				.build();
-	}
+	
 	
 	@Bean
 	public Job weWishJob() {
 		return jobBuilderFactory.get("nameOfFactory")
 				.incrementer(new RunIdIncrementer())
 				.start(step1())
+				.build();
+	}
+	
+	@Bean
+	public Step step1() {
+		return stepBuilderFactory.get("stepName")
+				.<WeWish,WeWish>chunk(10)
+				.reader(reader())
+				.writer(writer())
 				.build();
 	}
 	@Override

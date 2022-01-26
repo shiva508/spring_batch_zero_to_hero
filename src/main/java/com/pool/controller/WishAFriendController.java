@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.pool.domin.WeWish;
 import com.pool.domin.WishFriend;
 import com.pool.modal.CommonResponse;
+import com.pool.service.WeWishBatchService;
 import com.pool.service.WishFriendService;
 import com.pool.util.WeWishFileProcessor;
 
@@ -26,19 +29,23 @@ public class WishAFriendController {
 
 	@Autowired
 	private WishFriendService wishFriendService;
-	
+
 	@Autowired
 	private WeWishFileProcessor weWishFileProcessor;
+
+	@Autowired
+	private WeWishBatchService weWishBatchService;
 
 	@PostMapping("/createwishfriend")
 	public ResponseEntity<?> wishAFriend(@ModelAttribute WishFriend wishFriend,
 			@RequestParam("wishImages") MultipartFile wishIamges) {
-		String imagebase64=weWishFileProcessor.byteToBase64Converter(wishIamges);
-		wishFriend.setWisherFriendMemory(imagebase64);;
+		String imagebase64 = weWishFileProcessor.byteToBase64Converter(wishIamges);
+		wishFriend.setWisherFriendMemory(imagebase64);
+		;
 		wishFriend = wishFriendService.createWishFriend(wishFriend);
 		return new ResponseEntity<>(wishFriend, HttpStatus.CREATED);
 	}
-	
+
 	@PostMapping("/createwishfriendrest")
 	public ResponseEntity<?> wishAFriendRest(@RequestBody WishFriend wishFriend) {
 		wishFriend = wishFriendService.createWishFriend(wishFriend);
@@ -74,5 +81,11 @@ public class WishAFriendController {
 	public ResponseEntity<?> getfriendswishes(@PathVariable("weWishId") Long weWishId) {
 		List<WishFriend> wishFriend = wishFriendService.getfriendswishes(weWishId);
 		return new ResponseEntity<>(wishFriend, HttpStatus.CREATED);
+	}
+
+	@PostMapping("/batchprocessing")
+	public String batchData(@RequestBody List<WeWish> weWishs) {
+		weWishBatchService.testBatch(weWishs);
+		return "SUCCESS";
 	}
 }
