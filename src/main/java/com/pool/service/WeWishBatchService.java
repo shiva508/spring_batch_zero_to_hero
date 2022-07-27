@@ -13,12 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import com.pool.configuration.batch.WeWishBatchConfiguration;
-import com.pool.configuration.batch.WeWishItemReader;
+import com.pool.configuration.batch.reader.WeWishItemReader;
 import com.pool.domin.WeWish;
 
 @Component
 public class WeWishBatchService {
-	@Autowired
+/*	@Autowired
 	private WeWishBatchConfiguration weWishBatchConfiguration;
 	
 	@Autowired
@@ -27,8 +27,7 @@ public class WeWishBatchService {
 	 
 
 	public void testBatch(List<WeWish> weWishs) {
-		WeWishItemReader<WeWish> userItemReader;
-		userItemReader=new WeWishItemReader<WeWish>();
+		WeWishItemReader<WeWish> userItemReader=new WeWishItemReader<WeWish>();
 		userItemReader.setReaderItems(weWishs);
 		weWishBatchConfiguration.setReader(userItemReader);
 		try {
@@ -39,5 +38,5 @@ public class WeWishBatchService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}*/
 }

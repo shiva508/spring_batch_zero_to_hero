@@ -85,7 +85,7 @@ public class WishAFriendController {
 
 	@PostMapping("/batchprocessing")
 	public String batchData(@RequestBody List<WeWish> weWishs) {
-		weWishBatchService.testBatch(weWishs);
+		/* weWishBatchService.testBatch(weWishs); */
 		return "SUCCESS";
 	}
 }

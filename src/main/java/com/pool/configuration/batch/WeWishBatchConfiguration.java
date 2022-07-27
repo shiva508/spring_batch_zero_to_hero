@@ -17,6 +17,8 @@ import org.springframework.batch.item.database.JpaItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.pool.domin.WeWish;
 
@@ -24,7 +26,7 @@ import com.pool.domin.WeWish;
 @EnableBatchProcessing
 public class WeWishBatchConfiguration extends DefaultBatchConfigurer{
 	
-	@Autowired
+	/*@Autowired
 	public StepBuilderFactory stepBuilderFactory;
 
 	@Autowired
@@ -34,8 +36,6 @@ public class WeWishBatchConfiguration extends DefaultBatchConfigurer{
 	
 	@Autowired
 	private EntityManagerFactory emf;
-	
-
 	
 
 	public void setReader(WeWishItemReader<WeWish> reader) {
@@ -78,5 +78,5 @@ public class WeWishBatchConfiguration extends DefaultBatchConfigurer{
 		MapJobRepositoryFactoryBean factoryBean=new MapJobRepositoryFactoryBean();
 		factoryBean.afterPropertiesSet();
 		return factoryBean.getObject();
-	}
+	}*/
 }

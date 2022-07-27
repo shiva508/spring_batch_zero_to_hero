@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.pool.api.Records;
 import com.pool.domin.WeWish;
 import com.pool.service.WeWishService;
 import com.pool.util.WeWishFileProcessor;
@@ -56,10 +54,12 @@ public class WeWishController {
 		return new ResponseEntity<>(weWishs, HttpStatus.CREATED);
 	}
 
-	@PostMapping(value = "/records", consumes = { MediaType.APPLICATION_XML_VALUE,
-			MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_XML_VALUE,
-					MediaType.APPLICATION_JSON_VALUE })
-	public Records records(@RequestBody Records records) {
+	@PostMapping(
+			value = "/records", 
+			consumes = { MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE }, 
+			produces = { MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE }
+			)
+	public WeWish records(@RequestBody WeWish records) {
 		return records;
 	}
 }

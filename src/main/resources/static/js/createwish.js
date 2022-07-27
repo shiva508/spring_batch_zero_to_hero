@@ -1,6 +1,8 @@
 console.log("Hello world!");
 
 $(document).ready(function () {
+	
+	
   $("#createwish").submit(function (event) {
     event.preventDefault();
     Swal.showLoading();
@@ -48,6 +50,10 @@ $(document).ready(function () {
       },
     });
   });
+
+$( "#shiva" ).click(function() {
+  alert( "Handler for .click() called." );
+});
 
   $("#wisher-image").change(function () {
     display(this, "wisher-image-base64");

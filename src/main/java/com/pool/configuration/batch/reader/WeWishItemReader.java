@@ -1,4 +1,4 @@
-package com.pool.configuration.batch;
+package com.pool.configuration.batch.reader;
 
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 public class WeWishItemReader<T> implements ItemReader<T> {
 
 	private ItemReader<T> delegate;
+	
 	private List<T> readerItems;
 
 	public WeWishItemReader() {
