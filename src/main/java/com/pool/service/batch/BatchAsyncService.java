@@ -34,6 +34,27 @@ public class BatchAsyncService {
 	@Qualifier("flatFileJob")
 	@Autowired
 	private Job flatFileJob;
+	
+	@Qualifier("jsonFileJob")
+	@Autowired
+	private Job jsonFileJob;
+	
+	@Qualifier("xmlFileJob")
+	@Autowired
+	private Job xmlFileJob;
+	
+	@Qualifier("jdbcStudentJob")
+	@Autowired
+	private Job jdbcStudentJob;
+	
+	@Qualifier("serviceStudentJob")
+	@Autowired
+	private Job serviceStudentJob;
+	
+	@Qualifier("jdbcJsonStudentJob")
+	@Autowired
+	private Job jdbcJsonStudentJob;
+	
 
 	@Async
 	public void asyncBatchProsessor(String jobname,List<CustomJobParameter> customJobParameters) {
@@ -48,10 +69,20 @@ public class BatchAsyncService {
 			}else if(jobname.equals("secondJob")) {
 				jobExecution=jobLauncher.run(secondJob, jobParameters);
 			}else if(jobname.equals("flatFileJob")) {
-				jobLauncher.run(flatFileJob, jobParameters);
+				jobExecution=jobLauncher.run(flatFileJob, jobParameters);
+			}else if(jobname.equals("jsonFileJob")) {
+				jobExecution=jobLauncher.run(jsonFileJob, jobParameters);
+			}else if(jobname.equals("xmlFileJob")) {
+				jobExecution=jobLauncher.run(xmlFileJob, jobParameters);
+			}else if(jobname.equals("jdbcStudentJob")) {
+				jobExecution=jobLauncher.run(jdbcStudentJob, jobParameters);
+			}else if(jobname.equals("serviceStudentJob")) {
+				jobExecution=jobLauncher.run(serviceStudentJob, jobParameters);
+			}else if(jobname.equals("jdbcJsonStudentJob")) {
+				jobExecution=jobLauncher.run(jdbcJsonStudentJob, jobParameters);
 			}
+			System.out.println(jobExecution.getJobConfigurationName());
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 	}
 }

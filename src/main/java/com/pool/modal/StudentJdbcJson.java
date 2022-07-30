@@ -6,17 +6,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class StudentJson implements Serializable {
+public class StudentJdbcJson implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Long id;
-	//ON Property mis match
-	//@JsonProperty("first_name") 
 	private String firstName;
-	
 	private String lastName;
 	private String email;
 
-	public StudentJson() {
+	public StudentJdbcJson() {
 		super();
 	}
 
@@ -24,38 +21,41 @@ public class StudentJson implements Serializable {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public StudentJdbcJson setId(Long id) {
 		this.id = id;
+		return this;
 	}
 
 	public String getFirstName() {
 		return firstName;
 	}
 
-	public void setFirstName(String firstName) {
+	public StudentJdbcJson setFirstName(String firstName) {
 		this.firstName = firstName;
+		return this;
 	}
 
 	public String getLastName() {
 		return lastName;
 	}
 
-	public void setLastName(String lastName) {
+	public StudentJdbcJson setLastName(String lastName) {
 		this.lastName = lastName;
+		return this;
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public StudentJdbcJson setEmail(String email) {
 		this.email = email;
+		return this;
 	}
 
 	@Override
 	public String toString() {
-		return "StudentCsv [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+		return "StudentJdbcJson [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ "]";
 	}
-
 }

@@ -3,6 +3,7 @@ package com.pool.modal;
 import java.io.Serializable;
 
 public class StudentCsv implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String firstName;
 	private String lastName;
@@ -10,7 +11,6 @@ public class StudentCsv implements Serializable{
 
 	public StudentCsv() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Long getId() {

@@ -1,5 +1,7 @@
 package com.pool.controller;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.batch.core.launch.JobOperator;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pool.modal.CustomJobParameter;
+import com.pool.modal.StudentResponse;
 import com.pool.service.batch.BatchAsyncService;
 
 @RestController
@@ -44,5 +47,21 @@ public class BatchJobController {
 		
 		}
 		return new ResponseEntity<>(executionid, HttpStatus.OK);
+	}
+	
+	@GetMapping("/studentresponse")
+	public ResponseEntity<?> studentsResponse(){
+		
+		List<StudentResponse> responses=new ArrayList<>();
+		for (long i = 0; i < 10; i++) {
+			responses.add(new StudentResponse(i+1,"Shiva"+i,"Shiva"+i,"datasrshiva"+i+"@gamil.com"));
+		}
+		return new ResponseEntity<>(responses, HttpStatus.OK);
+	}
+	
+	@PostMapping("/savestudent")
+	public ResponseEntity<StudentResponse> studentResponse( @RequestBody StudentResponse studentResponse){
+		System.out.println("Request received");
+		return new ResponseEntity<StudentResponse>(studentResponse, HttpStatus.OK);
 	}
 }

@@ -2,21 +2,14 @@ package com.pool.modal;
 
 import java.io.Serializable;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class StudentJson implements Serializable {
+public class StudentJdbc implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Long id;
-	//ON Property mis match
-	//@JsonProperty("first_name") 
 	private String firstName;
-	
 	private String lastName;
 	private String email;
 
-	public StudentJson() {
+	public StudentJdbc() {
 		super();
 	}
 

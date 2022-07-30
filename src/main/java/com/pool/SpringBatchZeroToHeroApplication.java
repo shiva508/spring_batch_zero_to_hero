@@ -13,5 +13,4 @@ public class SpringBatchZeroToHeroApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBatchZeroToHeroApplication.class, args);
 	}
-
 }

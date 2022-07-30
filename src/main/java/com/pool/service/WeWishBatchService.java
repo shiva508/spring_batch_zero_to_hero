@@ -18,7 +18,7 @@ import com.pool.domin.WeWish;
 
 @Component
 public class WeWishBatchService {
-/*	@Autowired
+	@Autowired
 	private WeWishBatchConfiguration weWishBatchConfiguration;
 	
 	@Autowired
@@ -38,5 +38,5 @@ public class WeWishBatchService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}*/
+	}
 }

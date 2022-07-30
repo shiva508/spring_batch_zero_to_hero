@@ -20,63 +20,65 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.pool.configuration.batch.reader.WeWishItemReader;
 import com.pool.domin.WeWish;
 
 @Configuration
 @EnableBatchProcessing
-public class WeWishBatchConfiguration extends DefaultBatchConfigurer{
-	
-	/*@Autowired
+public class WeWishBatchConfiguration extends DefaultBatchConfigurer {
+
+	@Autowired
 	public StepBuilderFactory stepBuilderFactory;
 
 	@Autowired
-	public JobBuilderFactory jobBuilderFactory; 
-	
+	public JobBuilderFactory jobBuilderFactory;
+
 	private WeWishItemReader<WeWish> reader;
-	
+
 	@Autowired
 	private EntityManagerFactory emf;
-	
 
 	public void setReader(WeWishItemReader<WeWish> reader) {
 		this.reader = reader;
 	}
-	
+
 	@StepScope
 	@Bean
 	public WeWishItemReader<WeWish> reader() {
 		return reader;
 	}
-	
+
 	@StepScope
 	@Bean
-	public JpaItemWriter<WeWish> writer(){
-		JpaItemWriter<WeWish> writer=new JpaItemWriter<>();
+	public JpaItemWriter<WeWish> writer() {
+		JpaItemWriter<WeWish> writer = new JpaItemWriter<>();
 		writer.setEntityManagerFactory(emf);
 		return writer;
 	}
-	
-	
+
 	@Bean
 	public Job weWishJob() {
-		return jobBuilderFactory.get("nameOfFactory")
-				.incrementer(new RunIdIncrementer())
-				.start(step1())
-				.build();
+		return jobBuilderFactory
+								.get("nameOfFactory")
+								.incrementer(new RunIdIncrementer())
+								.start(step1())
+								.build();
 	}
-	
+
 	@Bean
 	public Step step1() {
-		return stepBuilderFactory.get("stepName")
-				.<WeWish,WeWish>chunk(10)
+		return stepBuilderFactory
+				.get("stepName")
+				.<WeWish, WeWish>chunk(10)
 				.reader(reader())
 				.writer(writer())
 				.build();
 	}
+
 	@Override
 	public JobRepository createJobRepository() throws Exception {
-		MapJobRepositoryFactoryBean factoryBean=new MapJobRepositoryFactoryBean();
+		MapJobRepositoryFactoryBean factoryBean = new MapJobRepositoryFactoryBean();
 		factoryBean.afterPropertiesSet();
 		return factoryBean.getObject();
-	}*/
+	}
 }
